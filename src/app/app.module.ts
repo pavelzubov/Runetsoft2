@@ -4,11 +4,11 @@ import {FormsModule} from '@angular/forms';
 import {Base} from './base.service';
 import {HttpClient} from '@angular/common/http';
 import {HttpClientModule} from '@angular/common/http';
-import {Routes, RouterModule} from "@angular/router";
+import {Routes, RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 import {ErrorsTypesComponent} from './errors-types/errors-types.component';
 import {DirectoriesComponent} from './directories/directories.component';
-import {EditComponent} from "./errors-types/edit/edit.component";
+import {EditComponent} from './errors-types/edit/edit.component';
 
 const routes: Routes = [
   {path: '', component: DirectoriesComponent},

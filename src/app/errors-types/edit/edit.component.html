@@ -1,13 +1,30 @@
-<div class="content">
-  <div class="breadcrumbs">
-    <div class="breadcrumbs-item"><a routerLink="/">Справочники</a></div>
-    <div class="separator">></div>
-  </div>
-  <div class="title">
-    <div class="title-text">{{title}}</div>
+<div class="edit" [ngClass]="{'show':showModal}">
+  <div class="content">
+    <div class="breadcrumbs">
+      <div class="breadcrumbs-item"><a routerLink="/">Справочники</a></div>
+      <div class="separator">></div>
+      <div class="breadcrumbs-item"><a [routerLink]="" (click)="hide()">Типы ошибок</a></div>
+    </div>
+    <div class="title">
+      <div class="title-text">{{title}}</div>
+    </div>
+
+    <div class="info-block">
+      <div class="form-block">
+        <div class="name">Наименование</div>
+        <div class="input"><input type="text" [(ngModel)]="editedType.name"></div>
+        <div class="name">Тяжесть</div>
+        <div class="input"><input type="text" [(ngModel)]="editedType.weight"></div>
+        <div class="name">Балл</div>
+        <div class="input"><input type="number" [(ngModel)]="editedType.point"></div>
+        <div class="name">Действует до</div>
+        <div class="input"><input type="date" [ngModel]="editedType.endDate | date:'yyyy-MM-dd'" (ngModelChange)="editedType.endDate = $event"></div>
+        <div class="name">Описание</div>
+        <div class="input"><textarea name="" id="" cols="30" rows="10" [(ngModel)]="editedType.description"></textarea></div>
+        <div class="name">Единицы измерения</div>
+        <div class="input"><input type="text" [(ngModel)]="editedType.ei"></div>
+      </div>
+    </div>
   </div>
 
-  <div class="info-block">
-
-  </div>
 </div>

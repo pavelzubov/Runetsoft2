@@ -5,6 +5,15 @@
 div
   outline: 0px solid black
 
+.edit
+  background-color: #f4f4f4
+  height: 100%
+  width: 100%
+  position: absolute
+  top: 0
+  left: 0
+  display: none
+
 .content
   display: flex
   flex-direction: column
@@ -43,6 +52,7 @@ div
     border-radius: 0.2rem
     width: 100%
     box-sizing: border-box
+
 .table
   table
     border: 1px solid #999999
@@ -54,10 +64,12 @@ div
     tr
       background-color: #0885a0 !important
       color: white
-  td,th
+  td, th
     padding: 0.4rem
     text-align: center
   tr:nth-child(odd)
     background-color: white
   .name-column
     text-align: left
+.show
+  display: block !important

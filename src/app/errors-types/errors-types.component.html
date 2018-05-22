@@ -8,7 +8,7 @@
   </div>
   <div class="info-block">
     <div class="button-add">
-      <button><b>+</b> Создать новый</button>
+      <button (click)="edit.show()"><b>+</b> Создать новый</button>
     </div>
   </div>
   <div class="info-block">
@@ -29,7 +29,7 @@
         <tbody>
         <tr *ngFor="let type of filteredTypes">
           <td *ngFor="let field of fields" [ngClass]="{'name-column':field.id==='name'}">
-            <a href *ngIf="field.id==='name'">{{type[field.id]}}</a>
+            <a [routerLink]="" *ngIf="field.id==='name'" (click)="edit.show(type)">{{type[field.id]}}</a>
             <span *ngIf="field.id!=='name'">{{type[field.id]}}</span>
           </td>
         </tr>
