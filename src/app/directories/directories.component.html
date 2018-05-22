@@ -1,0 +1,15 @@
+<div class="title content">
+  <div class="title-text">Справочники</div>
+</div>
+<div class="container content">
+  <div class="box" *ngFor="let directory of directories">
+    <a routerLink="{{directory.id}}">
+      <div class="box-content">
+        <div class="box-img">
+          <img src="" alt="">
+        </div>
+        <div class="box-name">{{directory.name}}</div>
+      </div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="content">
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-item"><a routerLink="/">Справочники</a></div>
+    <div class="separator">></div>
+  </div>
+  <div class="title">
+    <div class="title-text">{{title}}</div>
+  </div>
+  <div class="info-block">
+    <div class="button-add">
+      <button><b>+</b> Создать новый</button>
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="filter">
+      <div class="filter-name">Фильтр</div>
+      <div class="filter-input"><input type="text" placeholder="Поиск" (keyup)="filter()" [(ngModel)]="filterInput"></div>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <div class="table">
+      <table>
+        <thead>
+        <tr>
+          <th *ngFor="let field of fields" [ngClass]="{'name-column':field.id==='name'}">{{field.name}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let type of filteredTypes">
+          <td *ngFor="let field of fields" [ngClass]="{'name-column':field.id==='name'}">
+            <a href *ngIf="field.id==='name'">{{type[field.id]}}</a>
+            <span *ngIf="field.id!=='name'">{{type[field.id]}}</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-edit></app-edit>
