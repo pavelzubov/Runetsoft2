@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic');
 
+@media screen and (min-width: 1200px) {
+  .content {
+    width: 70% !important
+  }
+}
+
 body,
 html {
   width: 100%;
@@ -20,10 +26,41 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  background-color: #999999;
+  color: azure;
+  cursor: default;
+}
+
 input, textarea {
   padding: 0.65rem;
   border: 1px solid #999999;
   border-radius: 0.3rem;
   width: 100%;
   box-sizing: border-box;
+}
+
+input.ng-touched.ng-invalid {
+  border: solid red 2px;
+}
+
+.breadcrumbs {
+  margin: 1rem;
+}
+
+.breadcrumbs-item, .separator {
+  float: left;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: auto;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+a {
+  color: #0885a0;
 }

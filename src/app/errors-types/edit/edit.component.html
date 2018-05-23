@@ -10,39 +10,45 @@
     </div>
 
     <div class="info-block">
-      <table class="form-table">
-        <tr class="input-block">
-          <td class="name">Наименование</td>
-          <td class="input"><input type="text" [(ngModel)]="editedType.name" [disabled]="choisedType.name"></td>
-        </tr>
-        <tr class="input-block">
-          <td class="name">Тяжесть</td>
-          <td class="input"><input type="number" [(ngModel)]="editedType.weight"></td>
-        </tr>
-        <tr class="input-block">
-          <td class="name">Балл</td>
-          <td class="input"><input type="number" [(ngModel)]="editedType.point"></td>
-        </tr>
-        <tr class="input-block">
-          <td class="name">Действует до</td>
-          <td class="input"><input type="date" [ngModel]="editedType.endDate | date:'yyyy-MM-dd'"
-                                    (ngModelChange)="editedType.endDate = $event"></td>
-        </tr>
-        <tr class="input-block">
-          <td class="name">Описание</td>
-          <td class="input"><textarea name="" id="" cols="30" rows="10"
-                                       [(ngModel)]="editedType.description"></textarea></td>
-        </tr>
-        <tr class="input-block">
-          <td class="name">Единицы измерения</td>
-          <td class="input"><input type="text" [(ngModel)]="editedType.ei"></td>
-        </tr>
-      </table>
+      <form #form="ngForm">
+        <table class="form-table">
+          <tr class="input-block">
+            <td class="name">Наименование</td>
+            <td class="input"><input type="text" name="name" #name="ngModel" [(ngModel)]="editedType.name" [disabled]="choisedType.name" required></td>
+            <td *ngIf="name.touched && !name.valid && !choisedType.name" class="invalid">Должно быть заполнено</td>
+          </tr>
+          <tr class="input-block">
+            <td class="name">Тяжесть</td>
+            <td class="input"><input type="number" name="weight" #weight="ngModel" [(ngModel)]="editedType.weight" required></td>
+            <td *ngIf="weight.touched && !weight.valid" class="invalid">Должно быть заполнено</td>
+          </tr>
+          <tr class="input-block">
+            <td class="name">Балл</td>
+            <td class="input"><input type="number" name="point" #point="ngModel" [(ngModel)]="editedType.point" required></td>
+            <td *ngIf="point.touched && !point.valid" class="invalid">Должно быть заполнено</td>
+          </tr>
+          <tr class="input-block">
+            <td class="name">Действует до</td>
+            <td class="input"><input type="date" name="endDate" #endDate="ngModel" [ngModel]="editedType.endDate | date:'yyyy-MM-dd'"
+                                     (ngModelChange)="editedType.endDate = $event" required></td>
+            <td *ngIf="endDate.touched && !endDate.valid" class="invalid">Должно быть заполнено</td>
+          </tr>
+          <tr class="input-block">
+            <td class="name">Описание</td>
+            <td class="input"><textarea name="" id="" cols="30" rows="10"
+                                        name="description" [(ngModel)]="editedType.description"></textarea></td>
+          </tr>
+          <tr class="input-block">
+            <td class="name">Единицы измерения</td>
+            <td class="input"><input type="text" name="ei" [(ngModel)]="editedType.ei"></td>
+          </tr>
+        </table>
+      </form>
     </div>
     <div class="info-block">
       <div class="buttons-block">
         <div class="button-block">
-          <button (click)="confirm()">Сохранить</button>
+          <button (click)="confirm()" [disabled]="form.invalid">Сохранить</button>
         </div>
         <div class="button-block">
           <button (click)="cancel()">Отменить<span *ngIf="choisedType.name"> изменения</span></button>

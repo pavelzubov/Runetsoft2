@@ -1,7 +1,7 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import {Base} from '../../base.service';
 import {TypeError, FieldTypeError} from '../../types.factory';
-import {NgModel} from '@angular/forms';
+import {NgModel, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -9,6 +9,7 @@ import {NgModel} from '@angular/forms';
   styleUrls: ['./edit.component.sass', '../../app.component.sass']
 })
 export class EditComponent implements OnInit {
+  @ViewChild('form') componentForm: NgForm;
   @Output() onRemove = new EventEmitter();
   @Output() onCreate = new EventEmitter();
   filterInput: string;
@@ -31,9 +32,9 @@ export class EditComponent implements OnInit {
   }
 
   confirm() {
-    this.hide();
     if (!this.choisedType.name) {
-      this.onCreate.emit(this.editedType);
+      this.onCreate.emit(Object.assign({}, this.editedType));
+      this.hide();
       return;
     }
     for (let field in this.choisedType) {
@@ -41,20 +42,20 @@ export class EditComponent implements OnInit {
         this.choisedType[field] = this.editedType[field];
       }
     }
+    this.hide();
   }
 
   cancel() {
-    // this.choisedType = this.editedType;
     this.hide();
   }
 
   remove() {
     this.onRemove.emit(this.editedType);
-    // this.choisedType = this.editedType;
     this.hide();
   }
 
   hide() {
+    this.componentForm.reset();
     this.showModal = false;
   }
 
