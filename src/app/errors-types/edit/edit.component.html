@@ -10,19 +10,46 @@
     </div>
 
     <div class="info-block">
-      <div class="form-block">
-        <div class="name">Наименование</div>
-        <div class="input"><input type="text" [(ngModel)]="editedType.name"></div>
-        <div class="name">Тяжесть</div>
-        <div class="input"><input type="text" [(ngModel)]="editedType.weight"></div>
-        <div class="name">Балл</div>
-        <div class="input"><input type="number" [(ngModel)]="editedType.point"></div>
-        <div class="name">Действует до</div>
-        <div class="input"><input type="date" [ngModel]="editedType.endDate | date:'yyyy-MM-dd'" (ngModelChange)="editedType.endDate = $event"></div>
-        <div class="name">Описание</div>
-        <div class="input"><textarea name="" id="" cols="30" rows="10" [(ngModel)]="editedType.description"></textarea></div>
-        <div class="name">Единицы измерения</div>
-        <div class="input"><input type="text" [(ngModel)]="editedType.ei"></div>
+      <table class="form-table">
+        <tr class="input-block">
+          <td class="name">Наименование</td>
+          <td class="input"><input type="text" [(ngModel)]="editedType.name" [disabled]="choisedType.name"></td>
+        </tr>
+        <tr class="input-block">
+          <td class="name">Тяжесть</td>
+          <td class="input"><input type="number" [(ngModel)]="editedType.weight"></td>
+        </tr>
+        <tr class="input-block">
+          <td class="name">Балл</td>
+          <td class="input"><input type="number" [(ngModel)]="editedType.point"></td>
+        </tr>
+        <tr class="input-block">
+          <td class="name">Действует до</td>
+          <td class="input"><input type="date" [ngModel]="editedType.endDate | date:'yyyy-MM-dd'"
+                                    (ngModelChange)="editedType.endDate = $event"></td>
+        </tr>
+        <tr class="input-block">
+          <td class="name">Описание</td>
+          <td class="input"><textarea name="" id="" cols="30" rows="10"
+                                       [(ngModel)]="editedType.description"></textarea></td>
+        </tr>
+        <tr class="input-block">
+          <td class="name">Единицы измерения</td>
+          <td class="input"><input type="text" [(ngModel)]="editedType.ei"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="info-block">
+      <div class="buttons-block">
+        <div class="button-block">
+          <button (click)="confirm()">Сохранить</button>
+        </div>
+        <div class="button-block">
+          <button (click)="cancel()">Отменить<span *ngIf="choisedType.name"> изменения</span></button>
+        </div>
+        <div class="button-block" *ngIf="choisedType.name">
+          <button (click)="remove()">Удалить</button>
+        </div>
       </div>
     </div>
   </div>

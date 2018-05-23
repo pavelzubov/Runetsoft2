@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Base} from '../../base.service';
 import {TypeError, FieldTypeError} from '../../types.factory';
 import {NgModel} from '@angular/forms';
@@ -9,9 +9,11 @@ import {NgModel} from '@angular/forms';
   styleUrls: ['./edit.component.sass', '../../app.component.sass']
 })
 export class EditComponent implements OnInit {
+  @Output() onRemove = new EventEmitter();
+  @Output() onCreate = new EventEmitter();
   filterInput: string;
   showModal = false;
-  choisedType: TypeError;
+  choisedType: TypeError = new TypeError();
   editedType: TypeError = new TypeError();
   filteredTypes: TypeError[] = [];
   types: TypeError[] = [];
@@ -29,7 +31,26 @@ export class EditComponent implements OnInit {
   }
 
   confirm() {
-    this.choisedType = this.editedType;
+    this.hide();
+    if (!this.choisedType.name) {
+      this.onCreate.emit(this.editedType);
+      return;
+    }
+    for (let field in this.choisedType) {
+      if (this.choisedType.hasOwnProperty(field)) {
+        this.choisedType[field] = this.editedType[field];
+      }
+    }
+  }
+
+  cancel() {
+    // this.choisedType = this.editedType;
+    this.hide();
+  }
+
+  remove() {
+    this.onRemove.emit(this.editedType);
+    // this.choisedType = this.editedType;
     this.hide();
   }
 

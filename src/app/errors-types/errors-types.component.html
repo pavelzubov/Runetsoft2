@@ -30,7 +30,8 @@
         <tr *ngFor="let type of filteredTypes">
           <td *ngFor="let field of fields" [ngClass]="{'name-column':field.id==='name'}">
             <a [routerLink]="" *ngIf="field.id==='name'" (click)="edit.show(type)">{{type[field.id]}}</a>
-            <span *ngIf="field.id!=='name'">{{type[field.id]}}</span>
+            <span *ngIf="field.id!=='name' && field.id!=='endDate'">{{type[field.id]}}</span>
+            <span *ngIf="field.id==='endDate'">{{type[field.id]  | date:'dd.MM.yyy'}}</span>
           </td>
         </tr>
         </tbody>
@@ -38,4 +39,4 @@
     </div>
   </div>
 </div>
-<app-edit></app-edit>
+<app-edit (onRemove)="remove($event)" (onCreate)="create($event)"></app-edit>

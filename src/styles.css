@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic');
+
 body,
 html {
   width: 100%;
@@ -9,4 +9,21 @@ html {
   font-family: 'PT Sans';
   font-size: 0.9rem;
   background-color: #f4f4f4;
+}
+
+button {
+  border: 0px solid black;
+  border-radius: 0.3rem;
+  background-color: #0885a0;
+  padding: 0.65rem;
+  color: white;
+  cursor: pointer;
+}
+
+input, textarea {
+  padding: 0.65rem;
+  border: 1px solid #999999;
+  border-radius: 0.3rem;
+  width: 100%;
+  box-sizing: border-box;
 }
