@@ -27,19 +27,22 @@ button {
 }
 
 button:disabled {
-  background-color: #999999;
-  color: azure;
+  /*background-color: #999999;
+  color: azure;*/
+  opacity: 0.5;
   cursor: default;
 }
 
-input, textarea {
+input, textarea, select,.pseudo-select {
   padding: 0.65rem;
   border: 1px solid #999999;
   border-radius: 0.3rem;
   width: 100%;
   box-sizing: border-box;
 }
+.pseudo-select{
 
+}
 input.ng-touched.ng-invalid {
   border: solid red 2px;
 }
@@ -50,6 +53,7 @@ input.ng-touched.ng-invalid {
 
 .breadcrumbs-item, .separator {
   float: left;
+  margin-right: 1rem
 }
 
 .content {
@@ -63,4 +67,10 @@ input.ng-touched.ng-invalid {
 
 a {
   color: #0885a0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }

@@ -13,8 +13,8 @@ export class TypeError {
   weight: number;
   point: number;
   endDate: Date | string;
-  description: string;
-  ei: string;
+  describe: string;
+  units: string;
 }
 
 export class FieldTypeError {

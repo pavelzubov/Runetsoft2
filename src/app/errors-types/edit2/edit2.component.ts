@@ -4,17 +4,20 @@ import {TypeError, FieldTypeError} from '../../types.factory';
 import {NgModel, NgForm} from '@angular/forms';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.sass', '../../app.component.sass']
+  selector: 'app-edit2',
+  templateUrl: './edit2.component.html',
+  styleUrls: ['./edit2.component.sass', '../../app.component.sass']
 })
-export class EditComponent implements OnInit {
+export class Edit2Component implements OnInit {
   @ViewChild('form') componentForm: NgForm;
   @Output() onRemove = new EventEmitter();
   @Output() onCreate = new EventEmitter();
+  type: any = {entry: ''};
+  filterInput: string;
   showModal = false;
   choisedType: TypeError = new TypeError();
   editedType: TypeError = new TypeError();
+  filteredTypes: TypeError[] = [];
   types: TypeError[] = [];
   fields: FieldTypeError[] = [];
   title: string;
@@ -62,5 +65,8 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.base.getData('entry.json').subscribe(res => {
+      this.type = res.response;
+    });
   }
 }

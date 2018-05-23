@@ -1,0 +1,51 @@
+<div class="edit" [ngClass]="{'show':showModal}">
+  <div class="content">
+    <div class="breadcrumbs">
+      <div class="breadcrumbs-item"><a routerLink="/">Справочники</a></div>
+      <div class="separator">></div>
+      <div class="breadcrumbs-item"><a [routerLink]="" (click)="hide()">Типы ошибок</a></div>
+    </div>
+    <div class="title">
+      <div class="title-text">{{type.entry.name}}</div>
+    </div>
+
+    <div class="info-block">
+      <form #form="ngForm">
+        <table class="form-table">
+          <tr class="input-block" *ngFor="let line of type.entry.items">
+            <td class="name">{{line.name}}</td>
+            <td class="input">
+              <input type="number" name="{{line.id}}" [disabled]="line.id==='name'"
+                     *ngIf="line.type==='FLOAT' || line.type==='INTEGER'" [value]="line.value">
+              <input type="text" name="{{line.id}}" [disabled]="line.id==='name'" *ngIf="line.type==='TEXT'"
+                     [value]="line.value">
+              <input type="date" name="{{line.id}}" [disabled]="line.id==='name'" *ngIf="line.type==='DATE'"
+                     [value]="line.value">
+              <textarea cols="30" rows="10" name="{{line.id}}" *ngIf="line.type==='TEXTAREA'"
+                        [value]="line.value"></textarea>
+              <!--<div class="pseudo-select" name="{{line.id}}" *ngIf="line.type==='SELECT'">
+                <span value="{{option.id}}" *ngFor="let option of line.values" [selected]="option.selected">
+                  {{option.name}}
+                </span>
+              </div>-->
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div class="info-block">
+      <div class="buttons-block">
+        <div class="button-block">
+          <button>Сохранить</button>
+        </div>
+        <div class="button-block">
+          <button>Отменить изменения</button>
+        </div>
+        <div class="button-block">
+          <button>Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

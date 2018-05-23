@@ -9,10 +9,12 @@ import {AppComponent} from './app.component';
 import {ErrorsTypesComponent} from './errors-types/errors-types.component';
 import {DirectoriesComponent} from './directories/directories.component';
 import {EditComponent} from './errors-types/edit/edit.component';
+import {Edit2Component} from './errors-types/edit2/edit2.component';
 
 const routes: Routes = [
   {path: '', component: DirectoriesComponent},
-  {path: 'errorstypes', component: ErrorsTypesComponent}
+  {path: 'errorstypes', component: ErrorsTypesComponent},
+  {path: 'edittype', component: Edit2Component}
 ];
 
 @NgModule({
@@ -20,7 +22,8 @@ const routes: Routes = [
     AppComponent,
     DirectoriesComponent,
     ErrorsTypesComponent,
-    EditComponent
+    EditComponent,
+    Edit2Component
   ],
   imports: [
     RouterModule.forRoot(routes),
