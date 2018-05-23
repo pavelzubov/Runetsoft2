@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import {Base} from '../../base.service';
-import {TypeError, FieldTypeError} from '../../types.factory';
+import {TypeError, FieldTypeError, Unit} from '../../types.factory';
 import {NgModel, NgForm} from '@angular/forms';
 
 @Component({
@@ -12,6 +12,7 @@ export class EditComponent implements OnInit {
   @ViewChild('form') componentForm: NgForm;
   @Output() onRemove = new EventEmitter();
   @Output() onCreate = new EventEmitter();
+  units: Unit[];
   showModal = false;
   choisedType: TypeError = new TypeError();
   editedType: TypeError = new TypeError();
@@ -62,5 +63,8 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.base.getData('entry.json').subscribe(res => {
+      this.units = res.response.entry.items;
+    });
   }
 }

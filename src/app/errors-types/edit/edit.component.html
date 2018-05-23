@@ -44,7 +44,14 @@
           </tr>
           <tr class="input-block">
             <td class="name">Единицы измерения</td>
-            <td class="input"><input type="text" name="units" [(ngModel)]="editedType.units"></td>
+            <td class="input">
+              <!--<input type="text" name="units" [(ngModel)]="editedType.units">-->
+              <select name="units" [(ngModel)]="editedType.units">
+                <option value="{{unit.name}}" *ngFor="let unit of units" [selected]="unit.selected">
+                  {{unit.name}}
+                </option>
+              </select>
+            </td>
           </tr>
         </table>
       </form>

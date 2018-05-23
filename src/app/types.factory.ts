@@ -22,3 +22,10 @@ export class FieldTypeError {
   name: string;
   type: string;
 }
+
+export class Unit {
+  id: number;
+  name: string;
+  selected: boolean;
+}
+
