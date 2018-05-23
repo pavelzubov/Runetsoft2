@@ -33,11 +33,12 @@ export class EditComponent implements OnInit {
   confirm() {
     if (!this.choisedType.name) {
       this.onCreate.emit(Object.assign({}, this.editedType));
+      console.log(Object.assign({}, this.editedType))
       this.hide();
       return;
     }
-    for (let field in this.choisedType) {
-      if (this.choisedType.hasOwnProperty(field)) {
+    for (let field in this.editedType) {
+      if (this.editedType.hasOwnProperty(field)) {
         this.choisedType[field] = this.editedType[field];
       }
     }

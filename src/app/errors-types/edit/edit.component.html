@@ -20,9 +20,9 @@
           </tr>
           <tr class="input-block">
             <td class="name">Тяжесть</td>
-            <td class="input"><input type="number" name="wunitsght" #wunitsght="ngModel"
-                                     [(ngModel)]="editedType.wunitsght" required></td>
-            <td *ngIf="wunitsght.touched && !wunitsght.valid" class="invalid">Должно быть заполнено</td>
+            <td class="input"><input type="number" name="weight" #weight="ngModel"
+                                     [(ngModel)]="editedType.weight" required></td>
+            <td *ngIf="weight.touched && !weight.valid" class="invalid">Должно быть заполнено</td>
           </tr>
           <tr class="input-block">
             <td class="name">Балл</td>
@@ -45,7 +45,6 @@
           <tr class="input-block">
             <td class="name">Единицы измерения</td>
             <td class="input">
-              <!--<input type="text" name="units" [(ngModel)]="editedType.units">-->
               <select name="units" [(ngModel)]="editedType.units">
                 <option value="{{unit.name}}" *ngFor="let unit of units">
                   {{unit.name}}
@@ -59,10 +58,10 @@
     <div class="info-block">
       <div class="buttons-block">
         <div class="button-block">
-          <button (click)="confirm()" [disabled]="form.invalid">Сохранить</button>
+          <button (click)="confirm()" [disabled]="form.invalid || form.pristine">Сохранить</button>
         </div>
         <div class="button-block">
-          <button (click)="cancel()">Отменить<span *ngIf="choisedType.name"> изменения</span></button>
+          <button (click)="cancel()">Отменить<span *ngIf="choisedType.name && form.dirty"> изменения</span></button>
         </div>
         <div class="button-block" *ngIf="choisedType.name">
           <button (click)="remove()">Удалить</button>
