@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <div class="info-block">
+  <div class="info-block" *ngIf="filteredTypes.length">
     <div class="table">
       <table>
         <thead>
@@ -36,6 +36,13 @@
         </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="info-block" *ngIf="!filteredTypes.length">
+    <div class="empty">
+      <div class="title">
+        <div class="title-text">Таких записей нет</div>
+      </div>
     </div>
   </div>
 </div>
