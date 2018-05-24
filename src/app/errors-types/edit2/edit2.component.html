@@ -4,6 +4,7 @@
       <div class="breadcrumbs-item"><a routerLink="/">Справочники</a></div>
       <div class="separator">></div>
       <div class="breadcrumbs-item"><a [routerLink]="" (click)="hide()">Типы ошибок</a></div>
+      <div class="separator">></div>
     </div>
     <div class="title">
       <div class="title-text">{{type.entry.name}}</div>
@@ -25,10 +26,9 @@
               <div class="pseudo-select" *ngIf="line.type==='SELECT'">
                 <input type="text" disabled [value]="currentUnit">
                 <div class="arrows">
-                  <div class="up arrow" (click)="unitChange('up')"><img src="../../../assets/images/up.png" alt="">
+                  <div class="up arrow" (click)="unitChange('up')"><img src="../../../assets/images/up.png">
                   </div>
-                  <div class="down arrow" (click)="unitChange('down')"><img src="../../../assets/images/down.png"
-                                                                            alt=""></div>
+                  <div class="down arrow" (click)="unitChange('down')"><img src="../../../assets/images/down.png"></div>
                 </div>
               </div>
             </td>
