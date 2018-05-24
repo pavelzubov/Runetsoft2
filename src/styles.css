@@ -80,3 +80,21 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+
+
+::-webkit-calendar-picker-indicator{
+  color: transparent;
+  opacity: 1;
+  padding: 0.9rem;
+  background-image:  url('./assets/images/calendar.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: cover;
+  border-left: 1px solid #999999;
+
+}
+
+input[type=date]{
+  padding: 0 !important;
+  padding-left: 0.65rem !important;
+}
