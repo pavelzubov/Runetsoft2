@@ -8,7 +8,6 @@
     <div class="title">
       <div class="title-text">{{type.entry.name}}</div>
     </div>
-
     <div class="info-block">
       <form #form="ngForm">
         <table class="form-table">
@@ -23,11 +22,13 @@
                      [value]="line.value">
               <textarea cols="30" rows="10" name="{{line.id}}" *ngIf="line.type==='TEXTAREA'"
                         [value]="line.value"></textarea>
-              <div class="pseudo-select"  *ngIf="line.type==='SELECT'">
+              <div class="pseudo-select" *ngIf="line.type==='SELECT'">
                 <input type="text" disabled [value]="currentUnit">
                 <div class="arrows">
-                  <div class="up arrow" (click)="unitChange('up')"><img src="../../../assets/images/up.png" alt=""></div>
-                  <div class="down arrow" (click)="unitChange('down')"><img src="../../../assets/images/down.png" alt=""></div>
+                  <div class="up arrow" (click)="unitChange('up')"><img src="../../../assets/images/up.png" alt="">
+                  </div>
+                  <div class="down arrow" (click)="unitChange('down')"><img src="../../../assets/images/down.png"
+                                                                            alt=""></div>
                 </div>
               </div>
             </td>
@@ -49,5 +50,4 @@
       </div>
     </div>
   </div>
-
 </div>

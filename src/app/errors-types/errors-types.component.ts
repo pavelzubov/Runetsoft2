@@ -39,6 +39,7 @@ export class ErrorsTypesComponent implements OnInit {
     this.types.splice(this.types.findIndex(item => item.id === type.id), 1);
     this.filter();
   }
+
   create(type) {
     this.types.push(type);
     this.filter();

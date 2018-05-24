@@ -10,8 +10,8 @@ import {NgModel, NgForm} from '@angular/forms';
 })
 export class EditComponent implements OnInit {
   @ViewChild('form') componentForm: NgForm;
-  @Output() onRemove = new EventEmitter();
-  @Output() onCreate = new EventEmitter();
+  @Output() Remove = new EventEmitter();
+  @Output() Create = new EventEmitter();
   units: Unit[];
   showModal = false;
   choisedType: TypeError = new TypeError();
@@ -32,12 +32,12 @@ export class EditComponent implements OnInit {
 
   confirm() {
     if (!this.choisedType.name) {
-      this.onCreate.emit(Object.assign({}, this.editedType));
-      console.log(Object.assign({}, this.editedType))
+      this.Create.emit(Object.assign({}, this.editedType));
+      console.log(Object.assign({}, this.editedType));
       this.hide();
       return;
     }
-    for (let field in this.editedType) {
+    for (const field in this.editedType) {
       if (this.editedType.hasOwnProperty(field)) {
         this.choisedType[field] = this.editedType[field];
       }
@@ -50,7 +50,7 @@ export class EditComponent implements OnInit {
   }
 
   remove() {
-    this.onRemove.emit(this.editedType);
+    this.Remove.emit(this.editedType);
     this.hide();
   }
 
@@ -59,9 +59,6 @@ export class EditComponent implements OnInit {
     this.showModal = false;
   }
 
-  public dateParse(date) {
-    return Date.parse(date);
-  }
 
   ngOnInit() {
     this.base.getData('entry.json').subscribe(res => {
