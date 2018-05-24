@@ -13,14 +13,14 @@ export class Edit2Component implements OnInit {
   @Output() onRemove = new EventEmitter();
   @Output() onCreate = new EventEmitter();
   type: any = {entry: ''};
-  filterInput: string;
   showModal = false;
   choisedType: TypeError = new TypeError();
   editedType: TypeError = new TypeError();
-  filteredTypes: TypeError[] = [];
   types: TypeError[] = [];
   fields: FieldTypeError[] = [];
   title: string;
+  units: any[] = [];
+  currentUnit: string;
 
   constructor(public base: Base) {
   }
@@ -60,13 +60,26 @@ export class Edit2Component implements OnInit {
     this.showModal = false;
   }
 
-  public dateParse(date) {
-    return Date.parse(date);
+  unitChange(direction: string) {
+    if (direction !== 'up' && direction !== 'down') {
+      console.log('wrong argument unitChange()');
+      return;
+    }
+    let currentIndex = this.units.findIndex(item => item.selected),
+      newCurrent = direction === 'up' ? --currentIndex : ++currentIndex;
+    this.units.map(item => item.selected = false);
+    if (newCurrent < 0) newCurrent = this.units.length - 1;
+    else if (newCurrent > this.units.length - 1) newCurrent = 0;
+    this.units[newCurrent].selected = true;
+    this.currentUnit = this.units.filter(item => item.selected)[0].name;
   }
 
   ngOnInit() {
     this.base.getData('entry.json').subscribe(res => {
       this.type = res.response;
+      console.log(res.response.entry.items[res.response.entry.items.length - 1].values);
+      this.units = res.response.entry.items[res.response.entry.items.length - 1].values;
+      this.currentUnit = this.units.filter(item => item.selected)[0].name;
     });
   }
 }

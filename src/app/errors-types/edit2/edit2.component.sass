@@ -37,34 +37,39 @@
 .invalid
   color: coral
 
-.box
+.pseudo-select
   position: relative
   float: left
   width: 100%
-
-.arrows
-  border-radius: 0px 0.3rem 0.3rem 0
-  position: absolute
-  right: 0
-  top: 0
-  width: 2.3rem
-  float: left
-  height: 100%
-  display: flex
-  justify-content: center
-  flex-direction: column
-  align-items: center
-  align-content: center
-  background: linear-gradient(to top, #096073, #51a9bb)
-  .arrow
-    width: 100%
-    text-align: center
-    font-size: 0.9rem
+  input:disabled
+    color: black
+  .arrows
+    border-radius: 0px 0.3rem 0.3rem 0
+    position: absolute
+    right: 0
+    top: 0
+    width: 2.8rem
+    float: left
     height: 100%
-    img
-      width: 0.6rem
-  .up
-    border-bottom: 1px solid #999999
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    align-content: center
+    background: linear-gradient(to top, #096073, #51a9bb)
+    .arrow
+      width: 100%
+      text-align: center
+      font-size: 0.9rem
+      height: 100%
+      opacity: 0.8
+      cursor: pointer
+      &:hover
+        opacity: 1
+      img
+        width: 0.6rem
+    .up
+      border-bottom: 1px solid #999999
 
 
 

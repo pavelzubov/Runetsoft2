@@ -34,7 +34,7 @@ button:disabled {
   cursor: default;
 }
 
-input, textarea, select,.pseudo-select {
+input, textarea, select {
   background-color: white;
   padding: 0.65rem;
   border: 1px solid #999999;
